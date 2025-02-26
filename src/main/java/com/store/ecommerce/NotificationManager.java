@@ -7,15 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class NotificationManager {
-    private String message;
 
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
     public NotificationManager(@Qualifier("sms") NotificationService notificationService) {
         this.notificationService = notificationService;
     }
 
-    public void sendNotifition() {
+    public void sendNotifition(String message) {
         notificationService.send(message);
     }
 
