@@ -10,9 +10,6 @@ public class StoreApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
-        var userService = context.getBean(UserService.class);
-        userService.registerUser(new User(1L, "testemail@gmail.com", "password","Tyler" ));
-        userService.registerUser(new User(1L, "testemail@gmail.com", "password","Tyler" ));
     }
 
 }
