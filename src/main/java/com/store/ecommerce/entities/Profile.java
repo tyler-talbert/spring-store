@@ -1,12 +1,14 @@
 package com.store.ecommerce.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Getter
 @Setter
 @Entity
@@ -29,4 +31,10 @@ public class Profile {
 
     @Column(name = "loyalty_points")
     private Integer loyaltyPoints;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId // user same column as both pk and fk for entity
+    @ToString.Exclude
+    private User user;
 }
