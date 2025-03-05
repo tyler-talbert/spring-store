@@ -1,4 +1,4 @@
-package services;
+package com.store.ecommerce.services;
 
 import com.store.ecommerce.entities.Address;
 import com.store.ecommerce.entities.Category;

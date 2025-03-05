@@ -2,11 +2,11 @@ package com.store.ecommerce;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import services.UserService;
+import com.store.ecommerce.services.UserService;
 
 
 
-@SpringBootApplication(scanBasePackages = {"com.store.ecommerce", "services"})
+@SpringBootApplication()
 public class StoreApplication {
 
 
@@ -14,9 +14,6 @@ public class StoreApplication {
 
        ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 
-       var user = context.getBean(UserService.class);
-
-       user.manageProducts();
     }
 
 }
