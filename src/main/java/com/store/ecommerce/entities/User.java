@@ -32,8 +32,8 @@ public class User {
     @Column(name = "password",  nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user_id") // sets owner of relationship to user_id field in addresses
-    @Builder.Default // needed to make builder work otherwise initialization is skipped
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    @Builder.Default
     private List<Address> addresses = new ArrayList<>();
 
     public void addAddress(Address address) {
@@ -78,7 +78,7 @@ public class User {
     @Builder.Default
     private Set<Tag> tags = new HashSet<>();
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
     @ManyToMany
@@ -87,6 +87,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
-    private Set<Product> favoriteProducts = new HashSet<>();
+    private Set<Product> wishlist = new HashSet<>();
+
+    public void addToWishlist(Product product) {
+        wishlist.add(product);
+    }
 
 }

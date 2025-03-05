@@ -32,7 +32,7 @@ public class Profile {
     @Column(name = "loyalty_points")
     private Integer loyaltyPoints;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId // user same column as both pk and fk for entity
     @ToString.Exclude

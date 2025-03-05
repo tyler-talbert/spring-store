@@ -1,17 +1,22 @@
 package com.store.ecommerce.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "categories")
 public class Category {
+
+    public Category(String name) {
+        this.name = name;
+    }
 
     @Id
     @Column(name = "id")
