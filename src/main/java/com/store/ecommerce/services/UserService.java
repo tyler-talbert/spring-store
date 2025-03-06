@@ -97,5 +97,28 @@ public class UserService {
         System.out.println(category);
     }
 
+    @Transactional
+    public void updateProductPrices(int newPrice, int categoryId) {
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(newPrice), (byte) categoryId);
+    }
+
+
+    @Transactional
+    public void fetchProducts() {
+       var products = productRepository.findProductsByPrice(BigDecimal.valueOf(1), BigDecimal.valueOf(15));
+       products.forEach(System.out::println);
+    }
+
+
+    @Transactional
+    public void fetchUsers() {
+        var user = userRepository.findAllWithAddresses();
+
+        user.forEach(u -> {
+            System.out.println(u);
+            u.getAddresses().forEach(System.out::println);
+        });
+    }
+
 
 }
